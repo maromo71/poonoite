@@ -1,8 +1,8 @@
-package br.edu.fatecmm.prjaluno;
+package br.edu.fatecmm.prjapolice;
 
-import br.edu.fatecmm.prjaluno.model.Apolice;
+import br.edu.fatecmm.prjapolice.model.Apolice;
 
-public class AlunoTeste {
+public class ApoliceTeste {
 
     public static void main(String[] args) {
 	    Apolice apolice = new Apolice();

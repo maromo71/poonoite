@@ -1,4 +1,4 @@
-package br.edu.fatecmm.prjaluno.model;
+package br.edu.fatecmm.prjapolice.model;
 
 public class Apolice {
     private String nomeSegurado;
