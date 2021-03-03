@@ -1,6 +1,6 @@
 package br.com.maromo;
 
-public class GerenciarEscola {
+public class Gerenciar {
 
     public static void main(String[] args) {
 	    //Definir os objetos
