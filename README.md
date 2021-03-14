@@ -17,7 +17,7 @@ Professor Me. Marcos Roberto de Moraes, leciona nas seguintes instituições:
 
 Site do professor [Maromo](https://maromo.com.br).
 
-## Como baixar os códidos:
+## Como baixar os códigos:
 
 Você pode clonar o repositório com o seguinte comando:
 ```
