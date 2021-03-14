@@ -1,5 +1,7 @@
 # Repositório POO Noite
 
+Repositório com os códigos realizados nas aulas com o professor Maromo, disciplina de Programação Orientada a Objetos (POO).
+
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -7,16 +9,11 @@
     <img src="https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/ed5569e8-c0dd-458c-8450-cde6300093bd/File/26d48b7b749c927c6b694ac463e92b22/duke_jetsurf_orig.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">project_title</h3>
-
+  <h3 align="center">Códigos de Aula</h3>
   <p align="center">
-    Repositório com os códigos realizados nas aulas com o professor Maromo, disciplina de Programação Orientada a Objetos (POO).
-    <br />
     <a href="https://github.com/github_username/repo_name"><strong>Ver projeto »</strong></a>
     <br />
-    <br />
     <a href="https://github.com/github_username/repo_name/issues">Reportar Erro </a>
-    ·
   </p>
 </p>
 
