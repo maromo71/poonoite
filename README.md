@@ -1,6 +1,26 @@
 # Repositório POO Noite
 
-Repositório com os códigos realizados nas aulas com o professor Maromo, disciplina de Programação Orientada a Objetos (POO).
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">project_title</h3>
+
+  <p align="center">
+    Repositório com os códigos realizados nas aulas com o professor Maromo, disciplina de Programação Orientada a Objetos (POO).
+    <br />
+    <a href="https://github.com/github_username/repo_name"><strong>Ver projeto »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/github_username/repo_name/issues">Reportar Erro </a>
+    ·
+  </p>
+</p>
+
+
 
 ## ADS Fatec
 
