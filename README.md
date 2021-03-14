@@ -1,10 +1,9 @@
 # Repositório POO Noite
 
 Repositório com os códigos realizados nas aulas com o professor Maromo, disciplina de Programação Orientada a Objetos (POO).
-<p align="center>
-  [![MIT License][license-shield]][license-url]
-  [![LinkedIn][linkedin-shield]][linkedin-url]
-</p>
+
+
+
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
