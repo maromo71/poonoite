@@ -12,8 +12,8 @@ Repositório com os códigos realizados nas aulas com o professor Maromo, discip
   <h3 align="center">Códigos de Aula</h3>
   <p align="center">
     <a href="https://github.com/maromo71/poonoite"><strong>Ver projeto »</strong></a>
-    .
-    <a href="https://github.com/maromo71/poonoite/issues">Reportar Erro</a>
+    <br />
+    <a href="https://github.com/maromo71/poonoite/issues"><strong>Reportar Erro</strong></a>
   </p>
 </p>
 
