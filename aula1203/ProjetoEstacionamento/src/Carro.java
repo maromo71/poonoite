@@ -5,7 +5,18 @@ public class Carro {
     private double preco;
     private int ano;
 
+    public Carro(){
+
+    }
+
+    public Carro(String marca, String modelo, double preco, int ano) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.preco = preco;
+        this.ano = ano;
+    }
     //métodos getters and setter
+
 
     public String getMarca() {
         return marca;

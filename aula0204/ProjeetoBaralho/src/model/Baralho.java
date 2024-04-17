@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Baralho {
@@ -24,6 +25,23 @@ public class Baralho {
             sb.append(carta);
         }
         return sb.toString();
+    }
+
+    public void embaralhar(){
+        Collections.shuffle(cartas);
+    }
+
+    public Carta sortearUmCarta(){
+        embaralhar();
+        Carta carta = cartas.get(0);
+        cartas.remove(carta);
+
+        return carta; //primeira carta
+
+    }
+
+    public List<Carta> getCartas() {
+        return cartas;
     }
 }
 
