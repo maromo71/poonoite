@@ -1,21 +1,27 @@
 package model;
 
+import exceptions.CaixaException;
+
 public class Caixa {
     private double saldo;
 
-    public void depositar(double valor){
+    public String depositar(double valor) throws CaixaException {
         if(valor > 0){
             saldo += valor;
-            return;
+            return "Depósito efetuado com sucesso\n";
+        }else{
+            throw new CaixaException(2);
         }
-        System.out.println("Valor inválido");
+
     }
-    public void sacar(double valor){
+    public String sacar(double valor) throws CaixaException {
         if(valor <= saldo){
             saldo -= valor;
-            return;
+            return "Saque efetuado com sucesso\n";
+        }else{
+            throw new CaixaException(1);
         }
-        System.out.println("Saldo insuficiente");
+
     }
 
     public double getSaldo(){

@@ -31,21 +31,47 @@ public class TelaMovimento2 {
         cmdEntrada.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                double valor = Double.parseDouble(txtValor.getText());
-                caixa.depositar(valor);
-                txtMsg.append("Depósito de " + valor + " efetuado \n");
-                txtValor.setText(null);
-                txtValor.requestFocus(); //colocar o foco no controle
+                try {
+                    double valor = Double.parseDouble(txtValor.getText());
+                    String mensagem = caixa.depositar(valor);
+                    if(mensagem!=null){
+                        txtMsg.append(mensagem);
+                    }
+
+                    txtValor.setText(null);
+                    txtValor.requestFocus(); //colocar o foco no controle
+
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Erro: " + ex.getMessage(),
+                            "Erro de Operação",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                }
+
             }
         });
         cmdRetirada.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                double valor = Double.parseDouble(txtValor.getText());
-                caixa.sacar(valor);
-                txtMsg.append("Saque de " + valor + " efetuado \n");
-                txtValor.setText(null);
-                txtValor.requestFocus(); //colocar o foco no controle
+                try{
+                    double valor = Double.parseDouble(txtValor.getText());
+                    String mensagem = caixa.sacar(valor);
+                    if(mensagem!=null){
+                        txtMsg.append(mensagem);
+                    }
+                    txtValor.setText(null);
+                    txtValor.requestFocus(); //colocar o foco no controle
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Erro: " + ex.getMessage(),
+                            "Erro de Operação",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                }
+
 
             }
         });

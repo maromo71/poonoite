@@ -87,20 +87,40 @@ public class TelaMovimento extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==cmdEntrada){
-            double valor = Double.parseDouble(txtValor.getText());
-            caixa.depositar(valor);
-            txtMsg.append("Depósito de " + valor + " efetuado \n");
-            txtValor.setText(null);
-            txtValor.requestFocus(); //colocar o foco no controle
-            return;
+            try{
+                double valor = Double.parseDouble(txtValor.getText());
+                String resposta = caixa.depositar(valor);
+                if (resposta != null){
+                    txtMsg.append(resposta + "\n");
+                }
+                txtValor.setText(null);
+                txtValor.requestFocus(); //colocar o foco no controle
+            }catch (Exception ex){
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Erro: " + ex.getMessage(),
+                        "Erro de Operação",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
         }
         if(e.getSource()==cmdRetirada){
-            double valor = Double.parseDouble(txtValor.getText());
-            caixa.sacar(valor);
-            txtMsg.append("Saque de " + valor + " efetuado \n");
-            txtValor.setText(null);
-            txtValor.requestFocus(); //colocar o foco no controle
-            return;
+            try{
+                double valor = Double.parseDouble(txtValor.getText());
+                String resposta = caixa.sacar(valor);
+                if(resposta!= null){
+                    txtMsg.append(resposta);
+                }
+                txtValor.setText(null);
+                txtValor.requestFocus(); //colocar o foco no controle
+            }catch (Exception ex) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Erro: " + ex.getMessage(),
+                        "Erro de Operação",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
         }
         if(e.getSource()==cmdConsulta){
             txtSaldo.setText(Double.toString(caixa.getSaldo()));
