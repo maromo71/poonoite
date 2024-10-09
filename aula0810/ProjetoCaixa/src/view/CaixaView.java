@@ -6,8 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class CaixaView extends JFrame implements ActionListener {
+public class CaixaView extends JFrame implements ActionListener, KeyListener {
     protected Dimension dFrame, dLabel, dTextField, dButton, dTextArea;
     protected Label lblValor, lblSaldo;
     protected TextField txtValor, txtSaldo;
@@ -19,19 +21,14 @@ public class CaixaView extends JFrame implements ActionListener {
         //Instanciar o objeto caixa
         caixa = new Caixa();
         //Definir altura e largura padrao
-        dLabel = new Dimension(40,20);
-        dFrame = new Dimension(350,400);
-        dTextField = new Dimension(150, 20);
-        dButton = new Dimension(95,20);
-        dTextArea = new Dimension(300,140);
+        definirTamanhos();
         //Definir a aparencia da janela
-        setTitle("Movimento de Caixa");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);//sem gerenciador de layout
-        setSize(dFrame);//tamanho na janela
-        setLocationRelativeTo(null); //centraliza a janela
-        setResizable(false); //nao redimensionar a janela
+        definirAparenciaJanela();
         //Colocar os novos componentes
+        adicionarComponentes();
+    }
+
+    private void adicionarComponentes() {
         lblValor = new Label("Valor: ");
         lblValor.setSize(dLabel);
         lblValor.setLocation(25, 50);
@@ -82,6 +79,23 @@ public class CaixaView extends JFrame implements ActionListener {
         add(txtMsg);
     }
 
+    private void definirAparenciaJanela() {
+        setTitle("Movimento de Caixa");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);//sem gerenciador de layout
+        setSize(dFrame);//tamanho na janela
+        setLocationRelativeTo(null); //centraliza a janela
+        setResizable(false); //nao redimensionar a janela
+    }
+
+    private void definirTamanhos() {
+        dLabel = new Dimension(40,20);
+        dFrame = new Dimension(350,400);
+        dTextField = new Dimension(150, 20);
+        dButton = new Dimension(95,20);
+        dTextArea = new Dimension(300,140);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == cmdSair){
@@ -121,5 +135,20 @@ public class CaixaView extends JFrame implements ActionListener {
             txtValor.setText(null);
             txtValor.requestFocus();
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }
