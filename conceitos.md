@@ -77,37 +77,46 @@ class Carro {
 ```
 ---
 
-## **4. Correção de Erros em Código Java**
+## **4. Associações Entre Classes**
 
-### **Erro Comum no Construtor:**
+A **associação** define um relacionamento entre duas classes, onde uma pode referenciar objetos da outra.
+- **Agregação**: Um objeto pode existir independentemente do outro.
+- **Composição**: Um objeto depende do outro e é destruído junto com ele.
+
+### **Exemplo de Associação:**
 ```java
-public class Pessoa {
-    private String nome;
-    private int idade;
-    
-    public Pessoa(String nome, int idade) {
-        nome = nome;  // Erro
-        idade = idade;  // Erro
-    }
+class Motor {
+    String tipo;
+}
+
+class Carro {
+    Motor motor;
 }
 ```
-**Correção:**
-```java
-public class Pessoa {
-    private String nome;
-    private int idade;
-    
-    public Pessoa(String nome, int idade) {
-        this.nome = nome;  // Correto
-        this.idade = idade;
-    }
-}
-```
-O erro ocorre porque os parâmetros do construtor têm o mesmo nome dos atributos da classe. O `this` diferencia os atributos da classe dos parâmetros do método.
-
 ---
 
-## **5. Encapsulamento**
+## **5. Pacotes e Importação de Classes**
+
+Os **pacotes** servem para organizar classes dentro de um projeto Java.
+- O comando `import` permite o uso de classes de outros pacotes.
+- O pacote **padrão** em Java é `java.lang` e não requer importação explícita.
+
+### **Exemplo de Uso de Pacotes:**
+```java
+package veiculos;
+
+public class Carro {
+    // Código da classe
+}
+```
+
+Em outro arquivo:
+```java
+import veiculos.Carro;
+```
+---
+
+## **6. Encapsulamento**
 
 O encapsulamento protege os atributos da classe e força o uso de métodos para acessá-los.
 
@@ -125,25 +134,6 @@ class Pessoa {
     }
 }
 ```
-
----
-
-## **6. Atributos e Métodos Estáticos**
-
-- **Atributos estáticos (`static`)** pertencem à classe e são compartilhados por todas as instâncias.
-- **Métodos estáticos (`static`)** podem ser chamados sem precisar instanciar um objeto.
-
-### **Exemplo:**
-```java
-class Contador {
-    static int totalContadores = 0;
-    
-    public Contador() {
-        totalContadores++;
-    }
-}
-```
-
 ---
 
 ## **7. Construtores e Construtores Sobrecarregados**
@@ -179,7 +169,53 @@ class Pessoa {
 ```
 ---
 
-## **8. Método `main` e Execução de Programas Java**
+## **8. Atributos e Métodos Estáticos**
+
+- **Atributos estáticos (`static`)** pertencem à classe e são compartilhados por todas as instâncias.
+- **Métodos estáticos (`static`)** podem ser chamados sem precisar instanciar um objeto.
+
+### **Exemplo:**
+```java
+class Contador {
+    static int totalContadores = 0;
+    
+    public Contador() {
+        totalContadores++;
+    }
+}
+```
+---
+
+## **9. Correção de Erros em Código Java**
+
+### **Erro Comum no Construtor:**
+```java
+public class Pessoa {
+    private String nome;
+    private int idade;
+    
+    public Pessoa(String nome, int idade) {
+        nome = nome;  // Erro
+        idade = idade;  // Erro
+    }
+}
+```
+**Correção:**
+```java
+public class Pessoa {
+    private String nome;
+    private int idade;
+    
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;  // Correto
+        this.idade = idade;
+    }
+}
+```
+O erro ocorre porque os parâmetros do construtor têm o mesmo nome dos atributos da classe. O `this` diferencia os atributos da classe dos parâmetros do método.
+---
+
+## **10. Método `main` e Execução de Programas Java**
 
 O método `main` é o ponto de entrada de execução de um programa Java.
 
@@ -191,39 +227,8 @@ public class Programa {
 }
 ```
 Se o `main` estiver ausente, a JVM não encontra o ponto de entrada do programa e ocorre um erro de compilação.
-
----
-
-## **9. Classes Abstratas e Restrição de Instanciação**
-
-A palavra-chave `abstract` impede que uma classe seja instanciada diretamente.
-
-```java
-abstract class Animal {
-    abstract void fazerSom();
-}
-
-// Erro ao tentar instanciar
-Animal a = new Animal(); // Não permitido
-```
----
-
-## **10. Construtores Padrão e Implícitos**
-
-Se um construtor não for declarado, o Java cria um **construtor padrão** automaticamente.
-
-```java
-class Carro {
-    String modelo;
-}
-
-// Funciona pois Java adiciona um construtor vazio automaticamente
-Carro c = new Carro();
-```
-Se um construtor for definido manualmente, o **construtor padrão não será mais criado automaticamente**.
-
 ---
 
 ### **Conclusão**
-Este resumo cobre os conceitos fundamentais da Programação Orientada a Objetos em Java, detalhando os principais temas abordados na sala de aula, incluindo correção de erros comuns, encapsulamento, métodos estáticos e execução de programas. Compreender esses tópicos melhora a estrutura, reutilização e manutenção do código.
+Este resumo cobre os conceitos fundamentais da Programação Orientada a Objetos em Java, detalhando os principais temas abordados na sala de aula (laboratório), incluindo **associações entre classes, pacotes e importação, encapsulamento, métodos estáticos** e **execução de programas**. Compreender esses tópicos melhora a estrutura, reutilização e manutenção do código.
 
