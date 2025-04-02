@@ -1,0 +1,10 @@
+public class Produto {
+    private int idProduto;
+    private String nomeProduto;
+    private boolean ativo;
+    private double preco;
+    private int qtdEstoque;
+    private String principalFornecedor;
+
+
+}
