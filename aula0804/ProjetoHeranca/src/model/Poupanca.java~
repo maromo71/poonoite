@@ -1,0 +1,10 @@
+package model;
+
+public class Poupanca extends Conta {
+    private double taxaJuros;
+
+    public Poupanca(int numConta, String nomeCliente, double taxaJuros) {
+        super(numConta, nomeCliente);
+        this.taxaJuros = taxaJuros;
+    }
+}
