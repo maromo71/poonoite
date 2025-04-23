@@ -119,8 +119,8 @@ public class TelaMovimento extends JFrame implements ActionListener, KeyListener
                     "Encerrando o programa",
                     "Encerrando",
                     JOptionPane.INFORMATION_MESSAGE);
-
-            System.exit(0); //encerra o programa
+            System.out.println("OOOOO");
+            //System.exit(0); //encerra o programa
         }
     }
 
