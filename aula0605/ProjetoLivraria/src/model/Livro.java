@@ -1,0 +1,78 @@
+package model;
+
+import java.util.Objects;
+
+public class Livro {
+    //atributos
+    private int ISBN;
+    private String titulo;
+    private int anoPublicacao;
+    private int quantidade;
+
+
+    //construtor
+    public Livro(int ISBN, String titulo, int anoPublicacao, int quantidade) {
+        this.ISBN = ISBN;
+        this.titulo = titulo;
+        this.anoPublicacao = anoPublicacao;
+        this.quantidade = quantidade;
+    }
+    //construtor padrao
+    public Livro(){
+
+    }
+
+    public int getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(int ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public int getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
+    public void setAnoPublicacao(int anoPublicacao) {
+        this.anoPublicacao = anoPublicacao;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return ISBN == livro.ISBN;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(ISBN);
+    }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "ISBN=" + ISBN +
+                ", titulo='" + titulo + '\'' +
+                ", anoPublicacao=" + anoPublicacao +
+                ", quantidade=" + quantidade +
+                '}';
+    }
+}
