@@ -45,19 +45,19 @@ public class Conta {
     }
 
     //metodos de negocio (depositar, sacar, imprimirExtrato)
-    public void depositar(double valor){
+    public boolean depositar(double valor){
         if(valor <= 0){
-            System.out.println("Valor invalido");
-            return;
+            return false;
         }
         this.saldo += valor;
+        return true;
     }
-    public void sacar(double valor){
+    public boolean sacar(double valor){
         if(valor > saldo){
-            System.out.println("Saldo insuficiente");
-            return;
+            return false;
         }
         this.saldo -= valor;
+        return true;
     }
     public void imprimirExtrato(){
         System.out.println("=-=-=-=-=-==-=-=-=-=-=-=-=-=");

@@ -10,8 +10,8 @@ public class GerenciarConta {
 
     public static void main(String[] args) {
         GerenciarConta gc = new GerenciarConta();
-        int opcao=0;
-        do{
+        int opcao = 0;
+        do {
             System.out.println("Menu Principal");
             System.out.println("1 - Criar Conta");
             System.out.println("2 - Depositar na Conta");
@@ -30,7 +30,7 @@ public class GerenciarConta {
                 case 9 -> System.exit(0);
                 default -> System.out.println("Opcao invalida");
             }
-        }while(opcao!=9);
+        } while (opcao != 9);
     }
 
     private void execListarTodas() {
@@ -40,7 +40,7 @@ public class GerenciarConta {
         }
     }
 
-    public void execCadastrar(){
+    public void execCadastrar() {
         //Cadastrar uma nova conta e coloca-la na lista
         System.out.println("Digite o numero da conta: ");
         int numero = Integer.parseInt(ler.nextLine());
@@ -53,51 +53,62 @@ public class GerenciarConta {
         System.out.println("Cadastrado com sucesso!");
         System.out.println("Total de contas no momento: " + contas.size());
     }
-    public void execDepositar(){
+
+    public void execDepositar() {
         int numero;
         System.out.println("Digite o numero da conta a depositar: ");
         numero = Integer.parseInt(ler.nextLine());
-        //percorrer a lista e encontrar ou nao esta conta
-        for(Conta conta : contas){
-            if(conta.getNumero() == numero){
-                double deposito;
-                System.out.println("Digite o valor a depositar: ");
-                deposito = Double.parseDouble(ler.nextLine());
-                conta.depositar(deposito);
-                System.out.println("Depositado com sucesso!");
-                return;
-            }
+        Conta conta = getConta(numero);
+        if(conta == null) {
+            System.out.println("Conta nao cadastrada!");
+            return;
         }
-        System.out.println("Conta nao cadastrada!");
+        System.out.println("Digite o valor do deposito: ");
+        double deposito = Double.parseDouble(ler.nextLine());
+        if(conta.depositar(deposito)) {
+            System.out.println("Depositado com sucesso!");
+        }else{
+            System.out.println("Valor invalido para deposito");
+        }
     }
-    public void execSacar(){
+
+    public void execSacar() {
         int numero;
         System.out.println("Digite o numero da conta a sacar: ");
         numero = Integer.parseInt(ler.nextLine());
-        //percorrer a lista e encontrar ou nao esta conta
-        for(Conta conta : contas) {
-            if (conta.getNumero() == numero) {
-                double saque;
-                System.out.println("Digite o valor a sacar: ");
-                saque = Double.parseDouble(ler.nextLine());
-                conta.sacar(saque);
-                System.out.println("Sacado com sucesso!");
-                return;
-            }
+        Conta conta = getConta(numero);
+        if(conta == null) {
+            System.out.println("Conta nao cadastrada!");
+            return;
         }
-        System.out.println("Conta nao cadastrada!");
+        System.out.println("Digite o valor do saque: ");
+        double valor = Double.parseDouble(ler.nextLine());
+        if(conta.sacar(valor)) {
+            System.out.println("Saque com sucesso!");
+        }else{
+            System.out.println("Sem saldo suficiente!");
+        }
+
     }
-    public void execConsultar(){
+
+    public void execConsultar() {
         int numero;
         System.out.println("Digite o numero da conta a consultar: ");
         numero = Integer.parseInt(ler.nextLine());
-        //percorrer a lista e encontrar ou nao esta conta
-        for(Conta conta : contas) {
+        Conta conta = getConta(numero);
+        if (conta == null) {
+            System.out.println("Conta nao cadastrada!");
+            return;
+        }
+        conta.imprimirExtrato();
+    }
+
+    public Conta getConta(int numero) {
+        for (Conta conta : contas) {
             if (conta.getNumero() == numero) {
-                conta.imprimirExtrato();
-                return;
+                return conta;
             }
         }
-        System.out.println("Conta nao cadastrada!");
+        return null;
     }
 }
