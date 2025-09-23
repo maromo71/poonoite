@@ -1,0 +1,70 @@
+@startuml
+' Configurações de aparência para melhor legibilidade
+skinparam classAttributeIconSize 0
+hide empty members
+left to right direction
+
+' Definição das Classes (Entidades Principais)
+class Cliente {
+  - id: int
+  - nome: String
+  - email: String
+}
+
+class Produto {
+  - id: int
+  - descricao: String
+  - preco: double
+}
+
+class Pedido {
+  - id: long
+  - data: LocalDate
+  + adicionarItem(item: PedidoDetalhe)
+  + calcularTotal(): double
+  + imprimirResumo()
+}
+
+class PedidoDetalhe {
+  - quantidade: int
+  - precoUnitario: double
+  + getSubtotal(): double
+}
+
+' Classes de Serviço e Controle
+class Utilitarios <<Utility>> {
+  + {static} carregarClientes(): List<Cliente>
+  + {static} carregarProdutos(): List<Produto>
+}
+
+class GerenciarApp <<Main>> {
+  - {static} clientes: List<Cliente>
+  - {static} produtos: List<Produto>
+  - {static} pedidos: List<Pedido>
+  + {static} main(args: String[])
+  - {static} efetuarPedido(scanner: Scanner)
+  ' ... outros métodos privados ...
+}
+
+' Definição dos Relacionamentos
+
+' Pedido é composto por PedidoDetalhe (Relação forte "parte-todo")
+Pedido "1" *-- "1..*" PedidoDetalhe : contém >
+
+' PedidoDetalhe está associado a um Produto
+PedidoDetalhe "0..*" -- "1" Produto : refere-se a >
+
+' Pedido está associado a um Cliente
+Pedido "0..*" -- "1" Cliente : feito por >
+
+' A classe principal (GerenciarApp) depende das outras classes para funcionar
+GerenciarApp ..> Pedido : <<cria>>
+GerenciarApp ..> Cliente
+GerenciarApp ..> Produto
+GerenciarApp ..> Utilitarios : <<usa>>
+
+' A classe Utilitarios cria instâncias de Cliente e Produto
+Utilitarios ..> Cliente : <<cria>>
+Utilitarios ..> Produto : <<cria>>
+
+@enduml
