@@ -1,5 +1,6 @@
 package view;
 
+import exception.CaixaException;
 import model.Caixa;
 import javax.swing.*;
 import java.awt.*;
@@ -100,20 +101,39 @@ public class CaixaView extends JFrame implements ActionListener {
         }
         if(e.getSource() == cmdDepositar){
             double valor = Double.parseDouble(txtValor.getText());
-            caixa.depositar(valor);
-            txtMsg.append("Depositado com sucesso! Valor: " +valor + "\n");
-            txtValor.setText("");
-            JOptionPane.showMessageDialog(null,
-                    "Operação concluida com sucesso!");
+            try {
+                caixa.depositar(valor);
+                txtMsg.append("Depositado com sucesso! Valor: " +valor + "\n");
+                txtValor.setText("");
+                JOptionPane.showMessageDialog(null,
+                        "Operação concluida com sucesso!");
+            } catch (CaixaException ex) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Erro: " + ex.getMessage(),
+                        "Aconteu um erro",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+
             txtValor.requestFocus(); //coloca o foco no controle
             return;
         }
         if(e.getSource() == cmdRetirar){
             double valor = Double.parseDouble(txtValor.getText());
-            caixa.retirar(valor);
-            txtMsg.append("Retirado com sucesso! Valor: " +valor + "\n");
-            JOptionPane.showMessageDialog(null,
-                    "Saque realizado com sucesso");
+            try {
+                caixa.retirar(valor);
+                txtMsg.append("Retirado com sucesso! Valor: " +valor + "\n");
+                JOptionPane.showMessageDialog(null,
+                        "Saque realizado com sucesso");
+            } catch (CaixaException ex) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Erro: " + ex.getMessage(),
+                        "Aconteceu um erro",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
             txtValor.requestFocus();
             return;
         }

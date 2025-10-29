@@ -1,5 +1,6 @@
 package view;
 
+import exception.CaixaException;
 import model.Caixa;
 
 import javax.swing.*;
@@ -39,7 +40,11 @@ public class CaixaView2 {
             @Override
             public void mouseClicked(MouseEvent e) {
                 double valor = Double.parseDouble(txtValor.getText());
-                caixa.depositar(valor);
+                try {
+                    caixa.depositar(valor);
+                } catch (CaixaException ex) {
+                    throw new RuntimeException(ex);
+                }
 
                 txtMsg.append("Depositado com sucesso! Valor: " +valor + "\n");
                 txtValor.setText("");
@@ -61,7 +66,11 @@ public class CaixaView2 {
             @Override
             public void mouseClicked(MouseEvent e) {
                 double valor = Double.parseDouble(txtValor.getText());
-                caixa.retirar(valor);
+                try {
+                    caixa.retirar(valor);
+                } catch (CaixaException ex) {
+                    throw new RuntimeException(ex);
+                }
                 txtMsg.append("Retirado com sucesso! Valor: " +valor + "\n");
                 JOptionPane.showMessageDialog(null,
                         "Saque realizado com sucesso");
