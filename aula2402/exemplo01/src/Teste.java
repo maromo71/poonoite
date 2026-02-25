@@ -20,6 +20,8 @@ public class Teste {
         aluno2.nome = "Maria";
         aluno2.turma = "2. periodo";
         aluno2.data_matr = LocalDate.now();
+
+
         //Matricula dos dois alunos
         aluno1.matricular();
         aluno2.matricular();

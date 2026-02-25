@@ -6,6 +6,7 @@ public class Aluno {
     public String nome;
     public String turma;
     public LocalDate data_matr;
+    public static String nomeEscola = "Fatec";
 
     //2. Definir os metodos
     public void matricular(){
@@ -13,6 +14,7 @@ public class Aluno {
         System.out.println("Matricula efetuada, dados:");
         System.out.println("RM: " + rm);
         System.out.println("Nome: " + nome);
+        System.out.println("Escola: " + nomeEscola);
         System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
     }
 
