@@ -63,7 +63,19 @@ public class Curso {
         return disciplinas;
     }
 
-    public void setDisciplinas(List<Disciplina> disciplinas) {
-        this.disciplinas = disciplinas;
+    public void adicionarDisciplina(Disciplina disciplina){
+        disciplinas.add(disciplina);
+    }
+
+    @Override
+    public String toString() {
+        //Melhorar o toString desta classe. StringBuilder.
+        String lista = "";
+        for(Disciplina disciplina : disciplinas){
+            lista += disciplina.getNomeDisciplina() + "\n";
+        }
+        return "Curso: " + descricao + "\n" +
+                "Periodo: " + periodo + "\n" +
+                "Lista das disciplinas: \n" + lista;
     }
 }
