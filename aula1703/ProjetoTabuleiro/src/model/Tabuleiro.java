@@ -24,7 +24,21 @@ public class Tabuleiro {
         if(acertos >= 3){
             premio = acertos * 1000.0;
         }
+        exibirTabuleiro();
         return premio;
+    }
+
+    private void exibirTabuleiro() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if(palpites[0]==matriz[i][j] || palpites[1]==matriz[i][j]){
+                    System.out.printf("[%3d]* ", matriz[i][j]);
+                }else{
+                    System.out.printf("[%3d]  ", matriz[i][j]);
+                }
+            }
+            System.out.println(); //proxima linha do tabuleiro
+        }
     }
 
     private int verificarAcertos() {
