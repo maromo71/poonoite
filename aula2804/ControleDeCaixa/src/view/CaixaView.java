@@ -3,8 +3,11 @@ package view;
 import model.Caixa;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
-public class CaixaView extends JFrame {
+public class CaixaView extends JFrame implements ActionListener {
     private JLabel labelValor, labelSaldo;
     private JTextField textValor, textSaldo;
     private JButton buttonEntrada, buttonRetirada, buttonConsulta, buttonSair;
@@ -72,5 +75,47 @@ public class CaixaView extends JFrame {
         textMensagem.setSize(dTextArea);
         textMensagem.setLocation(25,210);
         this.add(textMensagem);
+        //3. Adicionar ouvintes para os objetos desejados
+        buttonSair.addActionListener(this);
+        buttonConsulta.addActionListener(this);
+        buttonRetirada.addActionListener(this);
+        buttonEntrada.addActionListener(this);
+        //4. Criar o objeto do tipo Caixa
+        caixa = new Caixa();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==buttonSair){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Saindo com cuidado!",
+                    "Sair",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            System.exit(0);
+        }
+        if(e.getSource()==buttonConsulta){
+            double saldo = caixa.getSaldo();
+            textSaldo.setText(Double.toString(saldo));
+        }
+        if(e.getSource()==buttonEntrada){
+            double valor = Double.parseDouble(textValor.getText());
+            caixa.depositar(valor);
+            LocalDate data = LocalDate.now();
+            String mensagem = "Deposito efetuado em " + data.toString() + "\n";
+            textMensagem.append(mensagem);
+            textValor.setText("");
+            textValor.requestFocus();
+        }
+        if(e.getSource()==buttonRetirada){
+            double valor = Double.parseDouble(textValor.getText());
+            caixa.sacar(valor);
+            LocalDate data = LocalDate.now();
+            String mensagem = "Saque efetuado em " + data.toString() + "\n";
+            textMensagem.append(mensagem);
+            textValor.setText("");
+            textValor.requestFocus();
+        }
     }
 }
