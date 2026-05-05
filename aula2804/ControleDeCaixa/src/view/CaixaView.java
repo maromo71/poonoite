@@ -1,13 +1,16 @@
 package view;
 
 import model.Caixa;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.time.LocalDate;
 
-public class CaixaView extends JFrame implements ActionListener {
+public class CaixaView extends JFrame implements ActionListener, KeyListener {
     private JLabel labelValor, labelSaldo;
     private JTextField textValor, textSaldo;
     private JButton buttonEntrada, buttonRetirada, buttonConsulta, buttonSair;
@@ -16,12 +19,12 @@ public class CaixaView extends JFrame implements ActionListener {
     private Caixa caixa;
 
     //Construtor
-    public CaixaView(){
+    public CaixaView() {
         //0. Definir os tamanhos padrão
         dFrame = new Dimension(350, 400);
-        dLabel = new Dimension(40,20);
-        dTextField = new Dimension(150,20);
-        dButton = new Dimension(95,20);
+        dLabel = new Dimension(40, 20);
+        dTextField = new Dimension(150, 20);
+        dButton = new Dimension(95, 20);
         dTextArea = new Dimension(300, 140);
         //1. Definir a aparencia da janela
         this.setTitle("Controle de Caixa"); //Titulo da Janela
@@ -43,27 +46,27 @@ public class CaixaView extends JFrame implements ActionListener {
 
         textValor = new JTextField("");
         textValor.setSize(dTextField);
-        textValor.setLocation(75,50);
+        textValor.setLocation(75, 50);
         this.add(textValor);
 
         textSaldo = new JTextField("");
         textSaldo.setSize(dTextField);
-        textSaldo.setLocation(75,80);
+        textSaldo.setLocation(75, 80);
         this.add(textSaldo);
 
         buttonEntrada = new JButton("Entrada");
         buttonEntrada.setSize(dButton);
-        buttonEntrada.setLocation(25,150);
+        buttonEntrada.setLocation(25, 150);
         this.add(buttonEntrada);
 
         buttonRetirada = new JButton("Retirada");
         buttonRetirada.setSize(dButton);
-        buttonRetirada.setLocation(225,150);
+        buttonRetirada.setLocation(225, 150);
         this.add(buttonRetirada);
 
         buttonConsulta = new JButton("Consulta");
         buttonConsulta.setSize(dButton);
-        buttonConsulta.setLocation(25,185);
+        buttonConsulta.setLocation(25, 185);
         this.add(buttonConsulta);
 
         buttonSair = new JButton("Sair");
@@ -73,20 +76,21 @@ public class CaixaView extends JFrame implements ActionListener {
 
         textMensagem = new JTextArea("");
         textMensagem.setSize(dTextArea);
-        textMensagem.setLocation(25,210);
+        textMensagem.setLocation(25, 210);
         this.add(textMensagem);
         //3. Adicionar ouvintes para os objetos desejados
         buttonSair.addActionListener(this);
         buttonConsulta.addActionListener(this);
         buttonRetirada.addActionListener(this);
         buttonEntrada.addActionListener(this);
+        textValor.addKeyListener(this);
         //4. Criar o objeto do tipo Caixa
         caixa = new Caixa();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==buttonSair){
+        if (e.getSource() == buttonSair) {
             JOptionPane.showMessageDialog(
                     null,
                     "Saindo com cuidado!",
@@ -95,27 +99,65 @@ public class CaixaView extends JFrame implements ActionListener {
             );
             System.exit(0);
         }
-        if(e.getSource()==buttonConsulta){
+        if (e.getSource() == buttonConsulta) {
             double saldo = caixa.getSaldo();
             textSaldo.setText(Double.toString(saldo));
         }
-        if(e.getSource()==buttonEntrada){
-            double valor = Double.parseDouble(textValor.getText());
-            caixa.depositar(valor);
-            LocalDate data = LocalDate.now();
-            String mensagem = "Deposito efetuado em " + data.toString() + "\n";
-            textMensagem.append(mensagem);
-            textValor.setText("");
-            textValor.requestFocus();
+        if (e.getSource() == buttonEntrada) {
+           try{
+               double valor = Double.parseDouble(textValor.getText());
+               caixa.depositar(valor);
+               LocalDate data = LocalDate.now();
+               String mensagem = "Deposito efetuado em " + data.toString() + "\n";
+               textMensagem.append(mensagem);
+               textValor.setText("");
+               textValor.requestFocus();
+           }catch(Exception ex){
+               JOptionPane.showMessageDialog(
+                       null,
+                       ex.getMessage(),
+                       "Erro ao Depositar.",
+                       JOptionPane.ERROR_MESSAGE
+               );
+           }
+
         }
-        if(e.getSource()==buttonRetirada){
-            double valor = Double.parseDouble(textValor.getText());
-            caixa.sacar(valor);
-            LocalDate data = LocalDate.now();
-            String mensagem = "Saque efetuado em " + data.toString() + "\n";
-            textMensagem.append(mensagem);
-            textValor.setText("");
-            textValor.requestFocus();
+        if (e.getSource() == buttonRetirada) {
+            try {
+                double valor = Double.parseDouble(textValor.getText());
+                caixa.sacar(valor);
+                LocalDate data = LocalDate.now();
+                String mensagem = "Saque efetuado em " + data.toString() + "\n";
+                textMensagem.append(mensagem);
+                textValor.setText("");
+                textValor.requestFocus();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        ex.getMessage(),
+                        "Erro ao Sacar.",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        char c = e.getKeyChar();
+        if(c<'0' || c>'9'){
+            e.consume();
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }
