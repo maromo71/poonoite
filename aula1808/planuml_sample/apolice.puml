@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+class Apolice {
+    - nomeSegurado: String
+    - idade: int 
+    - valorPremio: double 
+
+    + imprimir(): void
+}
+
+class ApoliceTeste {
+    + main(): void
+}
+
+'relacionamentos
+Apolice "1" -- "1..*" ApoliceTeste : cria >
+@enduml
