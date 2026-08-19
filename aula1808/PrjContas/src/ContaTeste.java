@@ -5,6 +5,8 @@ public class ContaTeste {
         conta1.numConta = 111;
         conta1.nomeCliente = "Maria";
         //Alteramos a taxa de movimentacao para todas as contas
+        //Atributo estático pertence a todos os objetos do mesmo
+        //tipo
         Conta.taxaMov = 0.0050;
 
         Conta conta2 = new Conta();
