@@ -1,0 +1,458 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, monospace;
+
+  /* Cores - Tema Claro */
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #f1f5f9;
+  --bg-code: #0f172a;
+  --bg-code-inline: #e2e8f0;
+  
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --text-heading: #0f172a;
+  --text-code-inline: #0f766e;
+  
+  --primary: #2563eb;
+  --primary-light: #eff6ff;
+  --primary-dark: #1d4ed8;
+  --accent: #6366f1;
+  --accent-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --shadow-card: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.03);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+/* Suporte a Tema Escuro Automático */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-page: #0b0f19;
+    --bg-surface: #111827;
+    --bg-surface-alt: #1f2937;
+    --bg-code: #030712;
+    --bg-code-inline: #1f2937;
+    
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --text-heading: #f8fafc;
+    --text-code-inline: #38bdf8;
+    
+    --primary: #3b82f6;
+    --primary-light: #1e293b;
+    --border-subtle: #1f2937;
+    --border-strong: #374151;
+  }
+}
+
+/* Estrutura Global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.6;
+  font-size: 9pt;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 30px 15px;
+}
+
+/* Container Centralizado */
+.markdown-body,
+main,
+article,
+body > div:first-child:not([class]),
+body {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Bloco de Conteúdo com Efeito Card */
+body {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 40px 48px;
+  box-shadow: var(--shadow-card);
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+/* Tipografia e Títulos */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-heading);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  letter-spacing: -0.015em;
+}
+
+h1:first-child {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 13pt;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-heading);
+  position: relative;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-subtle);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-size: 12pt;
+  font-weight: 700;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.1em;
+  background: var(--accent-gradient);
+  border-radius: 3px;
+}
+
+h3 {
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+h4 {
+  font-size: 10pt;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1.1em;
+  color: var(--text-main);
+  font-size: 9pt;
+}
+
+/* Links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px dashed var(--primary);
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+  border-bottom-style: solid;
+}
+
+/* Listas */
+ul, ol {
+  margin-top: 0.5em;
+  margin-bottom: 1.4em;
+  padding-left: 1.8em;
+}
+
+li {
+  margin-bottom: 0.4em;
+  color: var(--text-main);
+  font-size: 9pt;
+}
+
+li > ul,
+li > ol {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+/* Citações e Avisos (Blockquotes) */
+blockquote {
+  margin: 1.2em 0;
+  padding: 12px 16px;
+  background-color: var(--bg-surface-alt);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 8.5pt;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Linha Divisória */
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-strong), transparent);
+  margin: 2.2em 0;
+}
+
+/* Código Inline */
+code {
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+  font-weight: 500;
+  background-color: var(--bg-code-inline);
+  color: var(--text-code-inline);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Blocos de Código (pre) */
+pre {
+  background-color: var(--bg-code) !important;
+  color: #e2e8f0;
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+  line-height: 1.5;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin: 1.4em 0;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #1e293b;
+  position: relative;
+}
+
+pre code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  border: none !important;
+  font-size: inherit;
+}
+
+/* Tabelas Elegantes */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5em 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+thead {
+  background-color: var(--bg-surface-alt);
+}
+
+th {
+  font-weight: 700;
+  color: var(--text-heading);
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--border-subtle);
+}
+
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  font-size: 9pt;
+  vertical-align: top;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(241, 245, 249, 0.4);
+}
+
+tbody tr:hover {
+  background-color: var(--primary-light);
+  transition: background-color 0.15s ease;
+}
+
+/* Diagramas Mermaid e Elementos Visuais */
+.mermaid,
+div.mermaid,
+pre.mermaid {
+  display: block;
+  text-align: center;
+  margin: 2.2em auto;
+  background-color: #ffffff;
+  padding: 28px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+}
+
+.mermaid svg,
+div.mermaid svg {
+  max-width: 100% !important;
+  height: auto !important;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* Customização e Harmonização das Cores do Mermaid */
+.mermaid text,
+div.mermaid text {
+  font-family: var(--font-main) !important;
+}
+
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .classGroup rect {
+  fill: #f8fafc !important;
+  stroke: #2563eb !important;
+  stroke-width: 1.5px !important;
+}
+
+.mermaid .classTitleText,
+.mermaid .classTitle,
+.mermaid text.classTitle {
+  fill: #1e3a8a !important;
+  font-weight: 700 !important;
+}
+
+.mermaid .cluster rect {
+  fill: #f8fafc !important;
+  stroke: #94a3b8 !important;
+  stroke-dasharray: 4, 4 !important;
+  stroke-width: 1.2px !important;
+}
+
+.mermaid .cluster text {
+  fill: #475569 !important;
+  font-weight: 700 !important;
+}
+
+.mermaid .edgePath path,
+.mermaid .relation {
+  stroke: #475569 !important;
+  stroke-width: 1.8px !important;
+}
+
+.mermaid .edgeLabel {
+  color: #334155 !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+}
+
+/* Suporte de tema para o diagrama em modo escuro */
+@media (prefers-color-scheme: dark) {
+  .mermaid,
+  div.mermaid,
+  pre.mermaid {
+    background-color: #0f172a;
+    border-color: #1e293b;
+  }
+
+  .mermaid .node rect,
+  .mermaid .node polygon,
+  .mermaid .classGroup rect {
+    fill: #1e293b !important;
+    stroke: #60a5fa !important;
+  }
+
+  .mermaid .classTitleText,
+  .mermaid .classTitle,
+  .mermaid text.classTitle {
+    fill: #93c5fd !important;
+  }
+
+  .mermaid text {
+    fill: #e2e8f0 !important;
+  }
+
+  .mermaid .cluster rect {
+    fill: #111827 !important;
+    stroke: #475569 !important;
+  }
+
+  .mermaid .cluster text {
+    fill: #94a3b8 !important;
+  }
+
+  .mermaid .edgePath path,
+  .mermaid .relation {
+    stroke: #94a3b8 !important;
+  }
+
+  .mermaid .edgeLabel {
+    color: #cbd5e1 !important;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  margin: 1.5em 0;
+}
+
+/* Estilo para Impressão / Exportação em PDF */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    font-size: 11pt;
+  }
+
+  h1 {
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    color: #111827 !important;
+    border-bottom: 2pt solid #333 !important;
+  }
+
+  h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  pre, table, blockquote {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  pre {
+    background-color: #f3f4f6 !important;
+    color: #111827 !important;
+    border: 1px solid #d1d5db !important;
+  }
+}

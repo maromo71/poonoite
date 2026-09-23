@@ -21,16 +21,27 @@ public class Carrinho {
     }
 
     public void adicionarProduto(Produto produto, int quantidade){
-
+        for (ItemCarrinho item : itens) {
+            if (item.getProduto().getId() == produto.getId()) {
+                item.adicionarQuantidade(quantidade);
+                return;
+            }
+        }
+        itens.add(new ItemCarrinho(produto, quantidade));
     }
     public boolean removerProduto(int idProduto){
-        return true;
+        return itens.removeIf(
+                item -> item.getProduto().getId() == idProduto);
     }
     public double calcularTotal(){
-        return 0.0;
+        double total = 0.0;
+        for(ItemCarrinho item : itens){
+            total+= item.getSubTotal();
+        }
+        return total;
     }
     public boolean estaVazio(){
-        return true;
+        return itens.isEmpty();
     }
 
 }

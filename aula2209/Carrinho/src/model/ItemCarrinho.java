@@ -18,8 +18,9 @@ public class ItemCarrinho {
     }
 
     public void adicionarQuantidade(int qtd){
-
+        this.quantidade += qtd;
     }
+
     public double getSubTotal(){
         return produto.getPreco() * quantidade;
     }
