@@ -4,8 +4,11 @@ import model.Caixa;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class CaixaGUI extends JFrame {
+
+public class CaixaGUI extends JFrame implements ActionListener {
     //atributos da janela
     private JLabel lblValor, lblSaldo;
     private JTextField txtValor, txtSaldo;
@@ -54,21 +57,25 @@ public class CaixaGUI extends JFrame {
         btnDepositar = new JButton("Depositar");
         btnDepositar.setLocation(25,150);
         btnDepositar.setSize(dimButton);
+        btnDepositar.addActionListener(this);
         this.add(btnDepositar);
 
         btnSacar = new JButton("Sacar");
         btnSacar.setLocation(180,150);
         btnSacar.setSize(dimButton);
+        btnSacar.addActionListener(this);
         this.add(btnSacar);
 
         btnSaldo = new JButton("Saldo");
         btnSaldo.setLocation(25,185);
         btnSaldo.setSize(dimButton);
+        btnSaldo.addActionListener(this);
         this.add(btnSaldo);
 
         btnSair = new JButton("Sair");
         btnSair.setLocation(180,185);
         btnSair.setSize(dimButton);
+        btnSair.addActionListener(this);
         this.add(btnSair);
 
         txtMsg = new JTextArea("");
@@ -76,5 +83,10 @@ public class CaixaGUI extends JFrame {
         txtMsg.setSize(dimTextArea);
         this.add(txtMsg);
 
+    } //fecha o construtor
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
-}
+} //Fecha a classe
