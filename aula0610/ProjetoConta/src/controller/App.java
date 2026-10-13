@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class App {
     private List<Conta> contas = new ArrayList<>();
 
-
     public static void menu(){
         System.out.println("Menu de Operações");
         System.out.println("1. Cadastrar Conta");
@@ -46,6 +45,7 @@ public class App {
         System.out.println("Contas Corrente: " + totalCorrente);
         System.out.println("Poupanca: " + totalPoupanca);
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         var aplicativo = new App();
@@ -75,7 +75,10 @@ public class App {
         System.out.println("Patrimonio total do Banco R$ " + total);
     }
 
-    public Conta getConta(int numero){
+    public Conta getConta(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Informe o numero da conta desejada: ");
+        int numero = Integer.parseInt(sc.nextLine());
         Conta conta = null;
         for(Conta c : contas){
             if(c.getNumero()==numero){
@@ -87,9 +90,7 @@ public class App {
     }
     private  void execSacar() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Digite o numero da conta a sacar: ");
-        int numero = Integer.parseInt(sc.nextLine());
-        Conta conta = getConta(numero);
+        Conta conta = getConta();
         if(conta==null){
             System.out.println("Conta inexistente");
             return;
@@ -105,9 +106,7 @@ public class App {
 
     private  void execDepositar() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Digite o numero da conta a depositar: ");
-        int numero = Integer.parseInt(sc.nextLine());
-        Conta conta = getConta(numero);
+        Conta conta = getConta();
         if(conta==null){
             System.out.println("Conta inexistente");
             return;
