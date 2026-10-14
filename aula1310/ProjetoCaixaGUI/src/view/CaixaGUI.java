@@ -19,6 +19,8 @@ public class CaixaGUI extends JFrame implements ActionListener {
 
     //metodo construtor da janela
     public CaixaGUI(){
+        //Instanciar o objeto caixa
+        caixa = new Caixa();
         //Definir o tamanho padrao dos elementos
         dimLabel = new Dimension(40,20);
         dimTextField = new Dimension(150,20);
@@ -78,6 +80,7 @@ public class CaixaGUI extends JFrame implements ActionListener {
         btnSair.addActionListener(this);
         this.add(btnSair);
 
+
         txtMsg = new JTextArea("");
         txtMsg.setLocation(25,220);
         txtMsg.setSize(dimTextArea);
@@ -87,6 +90,33 @@ public class CaixaGUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if(e.getSource()==btnSair){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Saindo do programa",
+                    "Fim do programa",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            System.exit(0);
+        } else if(e.getSource()==btnSaldo){
+            txtSaldo.setText(Double.toString(caixa.getSaldo()));
+            txtMsg.append("Saldo consultado \n");
+        } else if(e.getSource()==btnDepositar){
+            double valor = Double.parseDouble(txtValor.getText());
+            if(caixa.depositar(valor)){
+                txtMsg.append("Deposito efetuado com sucesso\n");
+            }else{
+                txtMsg.append("Valor inválido para deposito\n");
+            }
+        }else if(e.getSource()==btnSacar){
+            double valor = Double.parseDouble(txtValor.getText());
+            if(caixa.sacar(valor)){
+                txtMsg.append("Saque efetuado com sucesso\n");
+            }else{
+                txtMsg.append("Sem saldo suficiente ou valor inválido\n");
+            }
+        }
+        txtValor.setText("");
+        txtValor.requestFocus(); //requer o foco
     }
 } //Fecha a classe
