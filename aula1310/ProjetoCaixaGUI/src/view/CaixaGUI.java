@@ -102,12 +102,21 @@ public class CaixaGUI extends JFrame implements ActionListener {
             txtSaldo.setText(Double.toString(caixa.getSaldo()));
             txtMsg.append("Saldo consultado \n");
         } else if(e.getSource()==btnDepositar){
-            double valor = Double.parseDouble(txtValor.getText());
-            if(caixa.depositar(valor)){
-                txtMsg.append("Deposito efetuado com sucesso\n");
-            }else{
-                txtMsg.append("Valor inválido para deposito\n");
-            }
+           try{
+               double valor = Double.parseDouble(txtValor.getText());
+               if(caixa.depositar(valor)){
+                   txtMsg.append("Deposito efetuado com sucesso\n");
+               }else{
+                   txtMsg.append("Valor inválido para deposito\n");
+               }
+           }catch (NumberFormatException ex){
+               JOptionPane.showMessageDialog(
+                       null,
+                       "Aconteceu o erro: valor invalido para depósito",
+                       "Erro, Verifique!!",
+                       JOptionPane.ERROR_MESSAGE
+               );
+           }
         }else if(e.getSource()==btnSacar){
             double valor = Double.parseDouble(txtValor.getText());
             if(caixa.sacar(valor)){
